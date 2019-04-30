@@ -1,4 +1,4 @@
-package com.github.maojx630.page.page;
+package com.github.maojx0630.page.page;
 
 import org.apache.ibatis.executor.parameter.ParameterHandler;
 import org.apache.ibatis.executor.statement.RoutingStatementHandler;

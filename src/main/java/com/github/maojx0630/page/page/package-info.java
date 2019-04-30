@@ -1,4 +1,4 @@
-package com.github.maojx630.page.page;
+package com.github.maojx0630.page.page;
 /*
   开启分页方式
   优先级从上到下 越靠上级别越高

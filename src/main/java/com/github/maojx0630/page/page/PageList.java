@@ -1,4 +1,4 @@
-package com.github.maojx630.page.page;
+package com.github.maojx0630.page.page;
 
 import java.util.ArrayList;
 import java.util.Collection;

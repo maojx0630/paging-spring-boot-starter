@@ -1,7 +1,7 @@
-package com.github.maojx630.page;
+package com.github.maojx0630.page;
 
-import com.github.maojx630.page.page.PageInterceptor;
-import com.github.maojx630.page.page.QueryInterceptor;
+import com.github.maojx0630.page.page.PageInterceptor;
+import com.github.maojx0630.page.page.QueryInterceptor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
