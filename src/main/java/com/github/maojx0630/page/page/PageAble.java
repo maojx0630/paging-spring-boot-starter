@@ -2,9 +2,8 @@ package com.github.maojx0630.page.page;
 
 
 /**
- * @author: MaoJiaXing
- * @date: 2019-04-28 16:43
- * @description: 分页信息
+ * 分页信息
+ * @author : MaoJiaXing
  */
 public class PageAble implements PageAbelQuick{
 

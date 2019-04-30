@@ -19,9 +19,7 @@ import java.util.regex.Pattern;
 
 
 /**
- * @author: MaoJiaXing
- * @date: 2019-04-29 08:45
- * @description:
+ * @author : MaoJiaXing
  */
 @Component
 @Intercepts({@Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class,

@@ -20,9 +20,8 @@ import java.util.Properties;
 
 
 /**
- * @author: MaoJiaXing
- * @date: 2019-04-28 16:43
- * @description: mybatis拦截器用户修改分页以及获取总数
+ * mybatis拦截器用户修改分页以及获取总数
+ * @author : MaoJiaXing
  */
 @Intercepts({@Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class, Integer.class})})
 @Component

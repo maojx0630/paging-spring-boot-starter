@@ -4,9 +4,8 @@ import java.util.List;
 
 
 /**
- * @author: MaoJiaXing
- * @date: 2019-04-28 16:44
- * @description: 分页工具类
+ * 分页工具类
+ * @author : MaoJiaXing
  */
 public class PageUtils {
 

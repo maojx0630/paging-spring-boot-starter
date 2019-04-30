@@ -7,9 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author: MaoJiaXing
- * @date: 2019-04-30 14:41
- * @description:
+ * @author : MaoJiaXing
  */
 @Configuration
 public class PageStarterConfig {

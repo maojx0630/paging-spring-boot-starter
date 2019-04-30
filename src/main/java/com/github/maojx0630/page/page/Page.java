@@ -4,9 +4,8 @@ import java.util.List;
 
 
 /**
- * @author: MaoJiaXing
- * @date: 2019-04-28 16:43
- * @description: 对分页的基本数据进行一个简单的封装
+ * 对分页的基本数据进行一个简单的封装
+ * @author : MaoJiaXing
  */
 public class Page<T> {
 	/**

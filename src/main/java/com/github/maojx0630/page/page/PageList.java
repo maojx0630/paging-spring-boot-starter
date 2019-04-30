@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * @author: MaoJiaXing
- * @date: 2019-04-29 08:37
- * @description:
+ * @author : MaoJiaXing
  */
 class PageList<T> extends ArrayList<T> {
 
