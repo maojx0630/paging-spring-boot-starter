@@ -44,7 +44,7 @@ public class Page<T> {
 			this.results = results;
 			this.setTotalPage(totalRecord % pageSize == 0 ? totalRecord / pageSize : totalRecord / pageSize + 1);
 			empty = results == null || results.isEmpty();
-			end = pageNo == totalPage;
+			end = pageNo >= totalPage;
 		}else {
 			throw new RuntimeException("did not open page or enablePageCount not true");
 		}
