@@ -21,6 +21,13 @@ public class PageUtils {
 	}
 
 	/**
+	 * 清除page分页信息
+	 */
+	public static void clear(){
+		PAGE_ABLE_THREAD_LOCAL.remove();
+	}
+
+	/**
 	 * 开启分页
 	 * @param pageAble pageAble对象
 	 */
