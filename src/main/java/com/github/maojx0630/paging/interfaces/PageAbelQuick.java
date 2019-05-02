@@ -1,4 +1,4 @@
-package com.github.maojx0630.paging.page;
+package com.github.maojx0630.paging.interfaces;
 
 
 /**
@@ -27,7 +27,7 @@ public interface PageAbelQuick {
 	 * @author MaoJiaXing
 	 * @return boolean  是否开启获取总数
 	 */
-	default boolean isEnablePageCount() {
+	default boolean isEnablePageCount(){
 		return true;
 	}
 }

@@ -19,7 +19,7 @@ public class Page<T> {
 	/**
 	 * 总条数
 	 */
-	private int totalRecord;
+	private long totalRecord;
 	/**
 	 * 总页数
 	 */
@@ -42,8 +42,8 @@ public class Page<T> {
 			this.pageSize = pageAble.getPageSize();
 			this.totalRecord = pageAble.getCount();
 			this.results = results;
-			this.setTotalPage(totalRecord % pageSize == 0 ? totalRecord / pageSize : totalRecord / pageSize + 1);
-			empty = results == null || results.isEmpty();
+			this.totalPage= (int) (totalRecord % pageSize == 0 ? totalRecord / pageSize : totalRecord / pageSize + 1);
+			empty = results.isEmpty();
 			end = pageNo >= totalPage;
 		}else {
 			throw new RuntimeException("did not open page or enablePageCount not true");
@@ -68,11 +68,11 @@ public class Page<T> {
 		this.pageSize = pageSize;
 	}
 
-	public int getTotalRecord() {
+	public long getTotalRecord() {
 		return totalRecord;
 	}
 
-	public void setTotalRecord(int totalRecord) {
+	public void setTotalRecord(long totalRecord) {
 		this.totalRecord = totalRecord;
 	}
 

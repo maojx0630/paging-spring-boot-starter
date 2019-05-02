@@ -1,19 +1,21 @@
 package com.github.maojx0630.paging.page;
 
 
+import com.github.maojx0630.paging.interfaces.PageAbelQuick;
+
 /**
  * 分页信息
  * @author : MaoJiaXing
  */
-public class PageAble implements PageAbelQuick{
+public class PageAble implements PageAbelQuick {
 
 	private int pageNo;
 
 	private int pageSize = 10;
 
-	private boolean enablePageCount=true;
+	private boolean enablePageCount = true;
 
-	private int count;
+	private long count;
 
 	private PageAble(int pageNo) {
 		this.pageNo = pageNo;
@@ -70,11 +72,11 @@ public class PageAble implements PageAbelQuick{
 		return enablePageCount;
 	}
 
-	int getCount() {
+	long getCount() {
 		return count;
 	}
 
-	void setCount(int count) {
+	void setCount(long count) {
 		this.count = count;
 	}
 }

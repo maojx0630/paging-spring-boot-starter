@@ -1,4 +1,4 @@
-package com.github.maojx0630.paging.page;
+package com.github.maojx0630.paging.interfaces;
 
 
 import java.lang.annotation.ElementType;
