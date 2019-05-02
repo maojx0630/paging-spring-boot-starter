@@ -20,7 +20,9 @@ public interface PageAbelQuick {
 	 * @author MaoJiaXing
 	 * @return int 每页长度数值
 	 */
-	int getPageSize();
+	default int getPageSize(){
+		return 10;
+	}
 
 	/**
 	 * 是否获取总数
