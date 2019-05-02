@@ -9,6 +9,8 @@ import org.apache.ibatis.mapping.ResultMapping;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author MaoJiaXing
@@ -18,8 +20,14 @@ class PageTool {
 	private static final String COUNT = "_COUNT";
 	private static final List<ResultMapping> EMPTY = new ArrayList<>(0);
 
-	static MappedStatement newCountMappedStatement(MappedStatement ms) {
-		MappedStatement.Builder builder = new MappedStatement.Builder(ms.getConfiguration(), ms.getId()+COUNT, ms.getSqlSource(), ms.getSqlCommandType());
+	private static final Map<String,MappedStatement> map=new ConcurrentHashMap<>();
+
+	static MappedStatement getCountMappedStatement(MappedStatement ms) {
+		String id=ms.getId()+COUNT;
+		if(map.containsKey(id)){
+			return map.get(id);
+		}
+		MappedStatement.Builder builder = new MappedStatement.Builder(ms.getConfiguration(), id, ms.getSqlSource(), ms.getSqlCommandType());
 		builder.resource(ms.getResource());
 		builder.fetchSize(ms.getFetchSize());
 		builder.statementType(ms.getStatementType());
@@ -34,7 +42,6 @@ class PageTool {
 		}
 		builder.timeout(ms.getTimeout());
 		builder.parameterMap(ms.getParameterMap());
-		//count查询返回值int
 		List<ResultMap> resultMaps = new ArrayList<>();
 		ResultMap resultMap = new ResultMap.Builder(ms.getConfiguration(), ms.getId(), Long.class, EMPTY).build();
 		resultMaps.add(resultMap);
@@ -43,8 +50,9 @@ class PageTool {
 		builder.cache(ms.getCache());
 		builder.flushCacheRequired(ms.isFlushCacheRequired());
 		builder.useCache(ms.isUseCache());
-
-		return builder.build();
+		MappedStatement countMs=builder.build();
+		map.put(id,countMs);
+		return countMs;
 	}
 
 

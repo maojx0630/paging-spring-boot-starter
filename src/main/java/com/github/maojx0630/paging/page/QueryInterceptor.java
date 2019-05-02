@@ -89,7 +89,7 @@ public class QueryInterceptor implements Interceptor {
 
 	private Long getCount(Executor executor, MappedStatement ms, Object parameter,
 	                      ResultHandler resultHandler, BoundSql boundSql) throws SQLException {
-		MappedStatement countMs = PageTool.newCountMappedStatement(ms);
+		MappedStatement countMs = PageTool.getCountMappedStatement(ms);
 		CacheKey countKey = executor.createCacheKey(countMs, parameter, RowBounds.DEFAULT, boundSql);
 		BoundSql countBoundSql = new BoundSql(countMs.getConfiguration(), sqlCountAndPaging.getCountSql(boundSql.getSql()), boundSql.getParameterMappings(), parameter);
 		Object countResultList = executor.query(countMs, parameter, RowBounds.DEFAULT, resultHandler, countKey, countBoundSql);
