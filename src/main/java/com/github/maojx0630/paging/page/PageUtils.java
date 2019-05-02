@@ -33,7 +33,7 @@ public class PageUtils {
 	 * @param pageNo 页码
 	 */
 	public static void start(int pageNo) {
-		PAGE_ABLE_THREAD_LOCAL.set(PageAble.of(pageNo, false));
+		PAGE_ABLE_THREAD_LOCAL.set(PageAble.of(pageNo));
 	}
 
 	/**
@@ -42,7 +42,7 @@ public class PageUtils {
 	 * @param pageSize 页长
 	 */
 	public static void start(int pageNo, int pageSize) {
-		PAGE_ABLE_THREAD_LOCAL.set(PageAble.of(pageNo, pageSize, false));
+		PAGE_ABLE_THREAD_LOCAL.set(PageAble.of(pageNo, pageSize));
 	}
 
 	/**

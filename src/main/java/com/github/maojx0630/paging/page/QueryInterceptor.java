@@ -55,7 +55,12 @@ public class QueryInterceptor implements Interceptor {
 			}
 			updateSql(boundSql, pageAble);
 			List<Object> object = executor.query(ms, parameter, rowBounds, resultHandler, cacheKey, boundSql);
-			return new PageList<>(object, pageAble);
+			if (pageAble.isEnablePageCount()) {
+				return new PageList<>(object, pageAble);
+			}else {
+				return object;
+			}
+
 		} else {
 			return executor.query(ms, parameter, rowBounds, resultHandler, cacheKey, boundSql);
 		}
