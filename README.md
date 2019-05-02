@@ -5,7 +5,7 @@ spring boot web引入
 <dependency>
    <groupId>com.github.maojx0630</groupId>
    <artifactId>paging-spring-boot-starter</artifactId>
-   <version>1.2</version>
+   <version>1.3</version>
 </dependency>
 ```
 非spring web项目 引入
@@ -13,7 +13,7 @@ spring boot web引入
 <dependency>
    <groupId>com.github.maojx0630</groupId>
    <artifactId>paging-spring-boot-starter</artifactId>
-   <version>1.2-NoWeb</version>
+   <version>1.3-NoWeb</version>
 </dependency>
 ```
 

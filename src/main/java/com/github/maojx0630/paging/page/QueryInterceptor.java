@@ -75,6 +75,14 @@ public class QueryInterceptor implements Interceptor {
 				pageAble = PageAble.of((PageAbelQuick) parameter);
 			}
 		}
+		if(pageAble != null){
+			if(pageAble.getPageNo()<1){
+				pageAble.setPageNo(1);
+			}
+			if(pageAble.getPageSize()<1){
+				pageAble.setPageSize(10);
+			}
+		}
 		return pageAble;
 	}
 
