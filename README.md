@@ -20,11 +20,11 @@ spring boot web引入
 ## 开启分页方法
 优先级从上到下 越靠上级别越高  
 * 使用PageUtils.start开启分页  
+* 传入PageAbelQuick对象(PageAbel已实现该接口,该对象可以通过手动传入参数构造,也可以通过实现PageAbelQuick接口的对象快速构造)多个时最靠前的参数生效 
 * 开启EnablePage注解（非web情况下不可用）  
     * 若设置pageSizeInt则会优先读取该数值
     * isEnablePageCount 为是否获取总数 默认开启
-    * pageSize与pageNo为request中的参数名
-* 传入PageAbelQuick对象(PageAbel已实现该接口,该对象可以通过手动传入参数构造,也可以通过实现PageAbelQuick接口的对象快速构造)多个时最靠前的参数生效  
+    * pageSize与pageNo为request中的参数名 
 ## 获取分页信息
 传入参数为mapper返回值  
 ```
