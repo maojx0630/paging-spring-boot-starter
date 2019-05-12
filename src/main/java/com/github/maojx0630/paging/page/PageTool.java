@@ -82,7 +82,7 @@ class PageTool {
 
 
 	static PageAble getPageAbleByParamMap(MapperMethod.ParamMap map) {
-		for (Object o : map.entrySet()) {
+		for (Object o : map.values()) {
 			if (o instanceof PageAble) {
 				return (PageAble) o;
 			} else if (o instanceof PageAbelQuick) {
