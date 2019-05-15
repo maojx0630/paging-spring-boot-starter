@@ -1,6 +1,10 @@
-package com.github.maojx0630.paging.page;
+package com.github.maojx0630.paging.page.able;
 
 import com.github.maojx0630.paging.interfaces.EnablePage;
+import com.github.maojx0630.paging.interfaces.PageAbelQuick;
+import com.github.maojx0630.paging.page.PageAble;
+import com.github.maojx0630.paging.page.PageTool;
+import org.apache.ibatis.binding.MapperMethod;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -9,13 +13,40 @@ import java.lang.reflect.Method;
 import java.util.regex.Pattern;
 
 /**
- * @author MaoJiaXing
+ * @author: MaoJiaXing
+ * @date: 2019-05-14 16:49
+ * @description:
  */
-class PageRequestUtils {
+public class WebAble implements AbleInterface{
+
+	@Override
+	public PageAble getPageAble(PageAble pageAble, Object parameter, String id) {
+		if (pageAble == null) {
+			if (parameter instanceof MapperMethod.ParamMap) {
+				pageAble = PageTool.getPageAbleByParamMap((MapperMethod.ParamMap) parameter);
+			} else if (parameter instanceof PageAble) {
+				pageAble = (PageAble) parameter;
+			} else if (parameter instanceof PageAbelQuick) {
+				pageAble = PageAble.of((PageAbelQuick) parameter);
+			}
+			if (pageAble == null) {
+				pageAble = getPageAbleById(id);
+			}
+		}
+		if(pageAble != null){
+			if(pageAble.getPageNo()<1){
+				pageAble.setPageNo(1);
+			}
+			if(pageAble.getPageSize()<1){
+				pageAble.setPageSize(10);
+			}
+		}
+		return pageAble;
+	}
 
 	private static final Pattern PATTERN = Pattern.compile("^\\+?[1-9][0-9]*$");
 
-	static PageAble getPageAbleById(String id) {
+	private PageAble getPageAbleById(String id) {
 		String className = id.substring(0, id.lastIndexOf("."));
 		String methodName = id.substring(id.lastIndexOf(".") + 1);
 		Method[] ms = new Method[0];

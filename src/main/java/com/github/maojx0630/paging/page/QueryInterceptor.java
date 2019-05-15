@@ -1,9 +1,8 @@
 package com.github.maojx0630.paging.page;
 
 
-import com.github.maojx0630.paging.interfaces.PageAbelQuick;
 import com.github.maojx0630.paging.interfaces.SqlCountAndPaging;
-import org.apache.ibatis.binding.MapperMethod;
+import com.github.maojx0630.paging.page.able.AbleInterface;
 import org.apache.ibatis.cache.CacheKey;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.BoundSql;
@@ -26,8 +25,11 @@ public class QueryInterceptor implements Interceptor {
 
 	private SqlCountAndPaging sqlCountAndPaging;
 
-	public QueryInterceptor(SqlCountAndPaging sqlCountAndPaging) {
+	private AbleInterface ableInterface;
+
+	public QueryInterceptor(SqlCountAndPaging sqlCountAndPaging,AbleInterface ableInterface) {
 		this.sqlCountAndPaging = sqlCountAndPaging;
+		this.ableInterface=ableInterface;
 	}
 
 	@Override
@@ -48,7 +50,7 @@ public class QueryInterceptor implements Interceptor {
 			cacheKey = (CacheKey) args[4];
 			boundSql = (BoundSql) args[5];
 		}
-		pageAble = getPageAble(pageAble, parameter, ms.getId());
+		pageAble = ableInterface.getPageAble(pageAble, parameter, ms.getId());
 		if (pageAble != null) {
 			if (pageAble.isEnablePageCount()) {
 				pageAble.setCount(getCount(executor, ms, parameter, resultHandler, boundSql));
@@ -64,30 +66,6 @@ public class QueryInterceptor implements Interceptor {
 		} else {
 			return executor.query(ms, parameter, rowBounds, resultHandler, cacheKey, boundSql);
 		}
-	}
-
-	private PageAble getPageAble(PageAble pageAble, Object parameter, String id) {
-		if (pageAble == null) {
-			if (parameter instanceof MapperMethod.ParamMap) {
-				pageAble = PageTool.getPageAbleByParamMap((MapperMethod.ParamMap) parameter);
-			} else if (parameter instanceof PageAble) {
-				pageAble = (PageAble) parameter;
-			} else if (parameter instanceof PageAbelQuick) {
-				pageAble = PageAble.of((PageAbelQuick) parameter);
-			}
-			if (pageAble == null) {
-				pageAble = PageRequestUtils.getPageAbleById(id);
-			}
-		}
-		if(pageAble != null){
-			if(pageAble.getPageNo()<1){
-				pageAble.setPageNo(1);
-			}
-			if(pageAble.getPageSize()<1){
-				pageAble.setPageSize(10);
-			}
-		}
-		return pageAble;
 	}
 
 	@Override

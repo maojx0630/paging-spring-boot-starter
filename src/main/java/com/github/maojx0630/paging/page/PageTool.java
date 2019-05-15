@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * @author MaoJiaXing
  */
-class PageTool {
+public class PageTool {
 
 	private static final String COUNT = "_COUNT";
 	private static final List<ResultMapping> EMPTY = new ArrayList<>(0);
@@ -81,7 +81,7 @@ class PageTool {
 	}
 
 
-	static PageAble getPageAbleByParamMap(MapperMethod.ParamMap map) {
+	public static PageAble getPageAbleByParamMap(MapperMethod.ParamMap map) {
 		for (Object o : map.values()) {
 			if (o instanceof PageAble) {
 				return (PageAble) o;

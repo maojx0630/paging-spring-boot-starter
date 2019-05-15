@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.github.maojx0630.paging.PageStarterConfig
+com.github.maojx0630.paging.PageStarterConfig

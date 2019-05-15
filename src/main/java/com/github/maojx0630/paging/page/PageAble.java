@@ -72,19 +72,19 @@ public class PageAble implements PageAbelQuick {
 		return enablePageCount;
 	}
 
-	long getCount() {
+	public long getCount() {
 		return count;
 	}
 
-	void setCount(long count) {
+	public void setCount(long count) {
 		this.count = count;
 	}
 
-	void setPageNo(int pageNo) {
+	public void setPageNo(int pageNo) {
 		this.pageNo = pageNo;
 	}
 
-	void setPageSize(int pageSize) {
+	public void setPageSize(int pageSize) {
 		this.pageSize = pageSize;
 	}
 }
