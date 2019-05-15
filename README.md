@@ -1,6 +1,5 @@
 # paging-spring-boot-starter
 ## 使用方法
-spring boot web引入
 ```xml
 <dependency>
    <groupId>com.github.maojx0630</groupId>
