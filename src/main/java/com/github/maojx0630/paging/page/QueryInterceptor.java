@@ -8,6 +8,7 @@ import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.plugin.*;
+import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 
@@ -82,6 +83,11 @@ public class QueryInterceptor implements Interceptor {
 		MappedStatement countMs = PageTool.getCountMappedStatement(ms);
 		CacheKey countKey = executor.createCacheKey(countMs, parameter, RowBounds.DEFAULT, boundSql);
 		BoundSql countBoundSql = new BoundSql(countMs.getConfiguration(), sqlCountAndPaging.getCountSql(boundSql.getSql()), boundSql.getParameterMappings(), parameter);
+		Object metaParameters = PageTool.getFieldValue(boundSql, "metaParameters");
+		if ( metaParameters!= null) {
+			MetaObject mo = (MetaObject) metaParameters;
+			PageTool.setFieldValue(countBoundSql, "metaParameters", mo);
+		}
 		Object countResultList = executor.query(countMs, parameter, RowBounds.DEFAULT, resultHandler, countKey, countBoundSql);
 		return (Long) ((List) countResultList).get(0);
 	}
