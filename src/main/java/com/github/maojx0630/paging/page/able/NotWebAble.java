@@ -7,8 +7,8 @@ import org.apache.ibatis.binding.MapperMethod;
 
 /**
  * @author: MaoJiaXing
- * @date: 2019-05-14 16:55
- * @description:
+ * date: 2019-05-14 16:55
+ * description:
  */
 public class NotWebAble implements AbleInterface{
 
