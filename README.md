@@ -4,7 +4,7 @@
 <dependency>
    <groupId>com.github.maojx0630</groupId>
    <artifactId>paging-spring-boot-starter</artifactId>
-   <version>1.5</version>
+   <version>1.6</version>
 </dependency>
 ```
 
